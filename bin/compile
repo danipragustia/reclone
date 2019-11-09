@@ -76,7 +76,7 @@ echo 'export PATH="$PATH:${HOME}/vendor/aria2c"' >> $PROFILE_PATH
 
 echo "-----> Fetching and vendoring p7zip"
 echo "       Using p7zip version: 16.02"
-curl "https://github.com/danipragustia/prebuilt-binary/raw/master/p7zip_16.02.tar.gz" -s -o - | tar xzf - -C "$VENDOR_DIR"
+curl "https://raw.githubusercontent.com/danipragustia/prebuilt-binary/master/p7zip_16.02.tar.gz" -s -o - | tar xzf - -C "$VENDOR_DIR"
 mv "$VENDOR_DIR/p7zip_16.02" "$VENDOR_DIR/p7zip"
 
 echo "exporting PATH" | indent
