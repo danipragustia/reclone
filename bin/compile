@@ -74,13 +74,12 @@ echo 'export PATH="$PATH:${HOME}/vendor/aria2c"' >> $PROFILE_PATH
 
 # Install p7zip
 
-echo "-----> Installing p7zip"
+echo "-----> Fetching and vendoring p7zip"
+echo "       Using p7zip version: 16.02"
 cd $1
-curl https://github.com/danipragustia/p7zip-binary-prebuilt/raw/master/p7zip-binary.tar.gz -s -O -ssl3
-mkdir -p vendor/p7zip
-tar -C vendor/p7zip -xvf p7zip-binary.tar.gz
-
+curl "https://github.com/danipragustia/prebuilt-binary/raw/master/p7zip_16.02.tar.gz" -s -o - | tar xzf - -C "$VENDOR_DIR"
+mv "$VENDOR_DIR/p7zip_16.02" "$VENDOR_DIR/p7zip"
 echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/p7zip.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
-echo 'export PATH="$PATH:${HOME}/vendor/p7zip/bin"' >> $PROFILE_PATH
+echo "export PATH=\$PATH:/app/vendor/p7zip/bin" >> $PROFILE_PATH
