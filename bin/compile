@@ -89,7 +89,7 @@ cd "$BUILD_DIR/$VENDOR_DIR"
 mkdir -p p7zip
 cd p7zip
 cp "$CACHE_DIR/$FILE_ARC" .
-tar jxf "$FILE_ARC"
+tar xzf "$FILE_ARC"
 mv "$FILE"/* .
 rm -rf "$FILE_ARC" "$FILE"
 
