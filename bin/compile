@@ -97,3 +97,17 @@ echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/p7zip.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
 echo "export PATH=\$PATH:/app/vendor/p7zip/bin" >> $PROFILE_PATH
+
+# Moving rclone config
+
+mkdir -p "$BUILD_DIR"/.profile.d
+cat <<EOF >"$BUILD_DIR"/.profile.d/rclone_config.sh
+cd "\$HOME"
+echo "-----> moving config file, rclone.conf"
+if [ -f "rclone.conf" ]; then
+  mkdir -p .config/rclone
+  mv -f rclone.conf .config/rclone/rclone.conf
+  echo "-----> Done."
+else
+  echo "rclone.conf not exist"  | indent
+fi
