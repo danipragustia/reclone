@@ -107,3 +107,13 @@ if [ -f "rclone.conf" ]; then
   mkdir -p .config/rclone
   mv -f rclone.conf .config/rclone/rclone.conf
 fi
+
+# Moving aria2 config
+
+mkdir -p "$BUILD_DIR"/.profile.d
+cat <<EOF >"$BUILD_DIR"/.profile.d/aria2_config.sh
+cd "\$HOME"
+if [ -f "aria2.conf" ]; then
+  mkdir -p .aria2
+  mv -f aria2.conf .aria2/aria2.conf
+fi
