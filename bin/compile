@@ -110,8 +110,6 @@ fi
 
 # Moving aria2 config
 
-mkdir -p "$BUILD_DIR"/.profile.d
-cat <<EOF >"$BUILD_DIR"/.profile.d/aria2_config.sh
 cd "\$HOME"
 if [ -f "aria2.conf" ]; then
   mkdir -p .aria2
