@@ -58,7 +58,6 @@ else
   echo "build using cached source"  | indent
 fi
 
-
 cd "$BUILD_DIR/$VENDOR_DIR"
 mkdir -p aria2c
 cd aria2c
@@ -66,11 +65,6 @@ cp "$CACHE_DIR/$FILE_ARC" .
 tar jxf "$FILE_ARC"
 mv "$FILE"/* .
 rm -rf "$FILE_ARC" "$FILE"
-
-echo "exporting PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/aria2c.sh"
-mkdir -p "$(dirname "$PROFILE_PATH")"
-echo 'export PATH="$PATH:${HOME}/vendor/aria2c"' >> $PROFILE_PATH
 
 # Install p7zip
 
@@ -93,10 +87,13 @@ tar xzf "$FILE_ARC"
 mv "$FILE"/* .
 rm -rf "$FILE_ARC" "$FILE"
 
+# Exporting PATH
+
 echo "exporting PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/p7zip.sh"
-mkdir -p "$(dirname "$PROFILE_PATH")"
-echo -e "export PATH=$PATH:${HOME}/vendor/p7zip/bin" >> $PROFILE_PATH
+mkdir -p "$(dirname "$BUILD_DIR/.profile.d/aria2c.sh")"
+mkdir -p "$(dirname "$BUILD_DIR/.profile.d/p7zip.sh")"
+echo 'export PATH="$PATH:${HOME}/vendor/aria2c"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:${HOME}/vendor/p7zip/bin"' >> $PROFILE_PATH
 
 # Moving rclone config
 
