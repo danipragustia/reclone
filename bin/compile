@@ -96,7 +96,7 @@ rm -rf "$FILE_ARC" "$FILE"
 echo "exporting PATH" | indent
 PROFILE_PATH="$BUILD_DIR/.profile.d/p7zip.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
-echo "export PATH=$PATH:${HOME}/vendor/p7zip/bin" >> $PROFILE_PATH
+echo -e "export PATH=$PATH:${HOME}/vendor/p7zip/bin" >> $PROFILE_PATH
 
 # Moving rclone config
 
